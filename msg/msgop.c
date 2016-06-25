@@ -54,7 +54,7 @@ get_msg(int qid, int msgtype)
 {
 	struct msgbuf msg;
 
-	if (msgrcv(qid, (void *) &msg, sizeof(msg.mtext), msgtype,
+	if (msgrcv(qid, (void *) &msg, (size_t)sizeof(msg.mtext), msgtype,
 				MSG_NOERROR | IPC_NOWAIT) == -1) {
 		if (errno != ENOMSG) {
 			perror("msgrcv");
